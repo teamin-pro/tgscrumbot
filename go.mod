@@ -1,4 +1,4 @@
-module shantiscrumbot
+module github.com/shantilabs/shantiscrumbot
 
 go 1.17
 
