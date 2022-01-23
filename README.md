@@ -2,12 +2,10 @@
 
 Simplest Telegram bot for [Scrum Planning Poker](https://en.wikipedia.org/wiki/Planning_poker):
 ```shell
-Scrum-master: 3... 2... 1... GO!
-Alice: 2222222
+Scrum-master: Ready? 3... 2... 1... GO!
+Alice: 2
 Bob: 10
 Carol: 5
-Alice: Sorry, cat on keyboard...
-Alice: 2
 Scrum-master: ---
 ShantiScrumBot: Num votes: 3, average: 6
 ```
@@ -22,6 +20,15 @@ ShantiScrumBot: Num votes: 3, average: 6
 2. to get results or to reset current vote send a message with any number of `-` symbols (e.g `-`, `----`, `------`)
 
 Text messages will be ignored. If you want to change your vote, just send a new value to the chat.
+
+```shell
+Alice: 222222222222222
+Alice: Sorry, cat on keyboard...
+Alice: 2
+Bob: 4
+Scrum-master: ---
+ShantiScrumBot: Num votes: 2, average: 3
+```
 
 ### Run on server (if you want own instance of this bot)
 ```shell
