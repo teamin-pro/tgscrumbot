@@ -13,8 +13,8 @@ import (
 )
 
 var (
-	helpText    = "https://github.com/shantilabs/shantiscrumbot"
-	stopRegex   = regexp.MustCompile(`^[\s\-—–]+$`)
+	helpText    = "https://github.com/shantichat/tgscrumbot"
+	stopRegex   = regexp.MustCompile(`^[\s\-—–=]+$`)
 	chatVotes   = make(map[int64]votes)
 )
 

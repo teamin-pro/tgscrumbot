@@ -1,4 +1,4 @@
-module github.com/shantilabs/shantiscrumbot
+module github.com/shantichat/tgscrumbot
 
 go 1.13
 
