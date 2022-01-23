@@ -22,7 +22,7 @@ ShantiScrumBot: Num votes: 3, average: 17
 
 Text messages will be ignored. If you want change vote, just send new value to chat.
 
-### Run on server
+### Run on server (if you want own instance of this bot)
 ```shell
 go get -u github.com/shantilabs/shantiscrumbot
 $HOME/go/bin/shantiscrumbot -token '0000000000:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' -vote-message='Num votes: %d, average: %d' 
