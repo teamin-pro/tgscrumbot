@@ -14,8 +14,8 @@ ShantiScrumBot: Num votes: 3, average: 17
 
 ### Install
 1. Create new group chat in Telegram
-2. Add @ShantiScrumBot
-3. Make @ShantiScrumBot group chat admin
+2. Add [@ShantiScrumBot](https://t.me/ShantiScrumBot)
+3. Make [@ShantiScrumBot](https://t.me/ShantiScrumBot) group chat admin
 
 ### Usage
 1. just make votes in chat. Vote is message with positive integer number
