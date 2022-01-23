@@ -1,6 +1,6 @@
 # SCRUM Poker Bot
 
-Simplest Telegram bot for Scrum poker:
+Simplest Telegram bot for [Scrum Planning Poker](https://en.wikipedia.org/wiki/Planning_poker):
 ```shell
 Scrum-master: 3... 2... 1... GO!
 Alice: 2222222
