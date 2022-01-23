@@ -31,3 +31,6 @@ $HOME/go/bin/shantiscrumbot -token '0000000000:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ### History
 Based on bot for [tada.team](https://tada.team) task messenger: https://github.com/tada-team/tdhooks
+
+### Playground
+https://t.me/+oIw9EKVrg8s5MGJi
