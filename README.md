@@ -25,12 +25,9 @@ Text messages will be ignored. If you want to change your vote, just send a new 
 
 ### Run on server (if you want own instance of this bot)
 ```shell
-go get -u github.com/shantilabs/shantiscrumbot
-$HOME/go/bin/shantiscrumbot -token '0000000000:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' -vote-message='Num votes: %d, average: %d' 
+go get -u github.com/shantchat/tgscrumbot
+$HOME/go/bin/tgscrumbot -token '0000000000:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' -vote-message='Num votes: %d, average: %d' 
 ```
-
-### History
-Based on bot for [tada.team](https://tada.team) task messenger: https://github.com/tada-team/tdhooks
 
 ### Playground
 https://t.me/+oIw9EKVrg8s5MGJi
