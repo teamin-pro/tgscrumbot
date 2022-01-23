@@ -9,7 +9,7 @@ Carol: 5
 Alice: Sorry, cat on keyboard...
 Alice: 2
 Scrum-master: ---
-ShantiScrumBot: Num votes: 3, average: 17
+ShantiScrumBot: Num votes: 3, average: 6
 ```
 
 ### Install
