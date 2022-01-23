@@ -18,10 +18,10 @@ ShantiScrumBot: Num votes: 3, average: 6
 3. Make [@ShantiScrumBot](https://t.me/ShantiScrumBot) group chat admin
 
 ### Usage
-1. just make votes in chat. Vote is message with positive integer number
-2. for results or reset write message with any number of `-` symbols (e.g `-`, `----`, `------`)
+1. just make votes in chat. A vote is a message containing only a positive integer
+2. to get results or to reset current vote send a message with any number of `-` symbols (e.g `-`, `----`, `------`)
 
-Text messages will be ignored. If you want change vote, just send new value to chat.
+Text messages will be ignored. If you want to change your vote, just send a new value to the chat.
 
 ### Run on server (if you want own instance of this bot)
 ```shell
