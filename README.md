@@ -1,6 +1,15 @@
 # SCRUM Poker Bot
 
-Simplest bot for Scrum poker.
+Simplest Telegram bot for Scrum poker:
+```shell
+Alice: 2222222
+Bob: 10
+Carol: 5
+Alice: Sorry, cat on keyboard...
+Alice: 2
+Scrum-master: ---
+ShantiScrumBot: Num votes: 3, average: 17
+```
 
 ### Install
 1. Create new group chat in Telegram
@@ -12,17 +21,6 @@ Simplest bot for Scrum poker.
 2. for results or reset write message with any number of `-` symbols (e.g `-`, `----`, `------`)
 
 Text messages will be ignored. If you want change vote, just send new value to chat.
-
-Example:
-```shell
-Alice: 2222222
-Bob: 10
-Carol: 5
-Alice: Sorry, cat on keyboard...
-Alice: 2
-Scrum-master: ---
-ShantiScrumBot: Num votes: 3, average: 17
-```
 
 ### Run on server
 ```shell
