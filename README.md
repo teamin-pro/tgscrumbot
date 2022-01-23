@@ -2,6 +2,7 @@
 
 Simplest Telegram bot for Scrum poker:
 ```shell
+Scrum-master: 3... 2... 1... GO!
 Alice: 2222222
 Bob: 10
 Carol: 5
