@@ -36,5 +36,5 @@ go get -u github.com/shantchat/tgscrumbot
 $HOME/go/bin/tgscrumbot -token '0000000000:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' -vote-message='Num votes: %d, average: %d' 
 ```
 
-### Playground
-https://t.me/+oIw9EKVrg8s5MGJi
+### Playground 
+https://t.me/+oIw9EKVrg8s5MGJi (this is not a bot, this is real demo chat with curious person)
