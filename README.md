@@ -37,4 +37,4 @@ $HOME/go/bin/tgscrumbot -token '0000000000:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' 
 ```
 
 ### Playground 
-https://t.me/+oIw9EKVrg8s5MGJi (this is not a bot, this is real demo chat with curious person)
+https://t.me/+oIw9EKVrg8s5MGJi (this is not a bot, this is real demo chat with curious persons)
