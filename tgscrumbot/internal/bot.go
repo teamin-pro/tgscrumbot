@@ -40,9 +40,11 @@ type Bot struct {
 }
 
 func (b Bot) Run() error {
-	b.logger.Info("start!")
-	b.logger.Info("help message: %s", b.helpMessage)
-	b.logger.Info("vote message: %s", b.voteMessage)
+	b.logger.Info(
+		"start!",
+		slog.String("vote_message", b.voteMessage),
+		slog.String("help_message", b.helpMessage),
+	)
 
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 30
@@ -71,7 +73,7 @@ func (b Bot) handleUpdate(message *tgbotapi.Message) error {
 }
 
 func (b Bot) handlePrivateMessage(message *tgbotapi.Message) error {
-	b.logger.Info("send help to %d", message.From.ID)
+	b.logger.Info("send help", slog.Int64("user", message.From.ID))
 	if _, err := b.api.Send(tgbotapi.NewMessage(message.Chat.ID, b.helpMessage)); err != nil {
 		return fmt.Errorf("failed to send help: %w", err)
 	}
@@ -86,7 +88,11 @@ func (b Bot) handleStopMessage(message *tgbotapi.Message) error {
 
 	results := fmt.Sprintf(b.voteMessage, state.num(), state.avg())
 
-	b.logger.Info("chat: %d results: %s", message.Chat.ID, results)
+	b.logger.Info(
+		"results",
+		slog.Int64("chat", message.Chat.ID),
+		slog.String("results", results),
+	)
 	if _, err := b.api.Send(tgbotapi.NewMessage(message.Chat.ID, results)); err != nil {
 		return fmt.Errorf("failed to send results: %w", err)
 	}
@@ -105,7 +111,12 @@ func (b Bot) handleVoteMessage(message *tgbotapi.Message) error {
 		b.chatVotes[message.Chat.ID] = make(votes)
 	}
 
-	b.logger.Info("chat: %d user: %d vote: %d", message.Chat.ID, message.From.ID, userVote)
+	b.logger.Info(
+		"vote",
+		slog.Int64("chat", message.Chat.ID),
+		slog.Int64("user", message.From.ID),
+		slog.Int("vote", userVote),
+	)
 	b.chatVotes[message.Chat.ID].add(message.From.ID, userVote)
 
 	return nil
