@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/lmittmann/tint"
-	"github.com/mattn/go-isatty"
 
 	"github.com/teamin-pro/tgscrumbot/tgscrumbot/internal"
 )
@@ -21,12 +20,10 @@ var (
 func main() {
 	flag.Parse()
 
-	w := os.Stdout
 	slog.SetDefault(slog.New(
-		tint.NewHandler(w, &tint.Options{
+		tint.NewHandler(os.Stdout, &tint.Options{
 			Level:      slog.LevelDebug,
 			TimeFormat: time.Kitchen,
-			NoColor:    !isatty.IsTerminal(w.Fd()),
 		}),
 	))
 
