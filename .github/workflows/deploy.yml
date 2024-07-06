@@ -35,6 +35,7 @@ jobs:
         run: |
           ansible-playbook \
             setup.yml \
-            -i 'main,ansible_host=${{ vars.SSH_HOST }} ansible_user=${{ vars.SSH_USER }} ansible_ssh_private_key_file=./id_rsa' \
+            -i 'main,' \
+            -e "ansible_host=${{ vars.ANSIBLE_HOST }} ansible_user=${{ vars.ANSIBLE_USER }} ansible_ssh_private_key_file=./id_rsa"  \
             -e 'ansible_ssh_common_args="-o StrictHostKeyChecking=no"'
         working-directory: ansible
