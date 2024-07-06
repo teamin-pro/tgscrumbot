@@ -32,8 +32,8 @@ jobs:
 
       - name: Create Inventory File
         run: |
-          echo '[webservers]' > inventory.ini
-          echo 'tgscrumbot-cloud ansible_host=${{ vars.SSH_HOST }} ansible_user=${{ vars.SSH_USER }} ansible_ssh_private_key_file=./id_rsa' >> inventory.ini
+          echo '[webservers]' > hosts.ini
+          echo 'tgscrumbot-cloud ansible_host=${{ vars.SSH_HOST }} ansible_user=${{ vars.SSH_USER }} ansible_ssh_private_key_file=./id_rsa' >> hosts.ini
         working-directory: ansible
 
       - name: Run Ansible Playbook
