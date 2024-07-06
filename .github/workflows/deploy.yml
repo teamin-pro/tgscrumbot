@@ -26,14 +26,16 @@ jobs:
       - name: Build
         run: go build -o ansible/tgscrumbot tgscrumbot/cmd/tgscrumbot/main.go
 
-
       - name: Copy ssh key
         run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > id_rsa && chmod 600 id_rsa
         working-directory: ansible
 
-      - name: Run Ansible Playbook
+      - name: Create Inventory File
         run: |
-          ansible-playbook setup.yml \
-            -i '${{ vars.SSH_HOST }},ansible_host=${{ vars.SSH_HOST }} ansible_user=${{ vars.SSH_USER }} ansible_ssh_private_key_file=./id_rsa' \
-            -e 'ansible_ssh_common_args="-o StrictHostKeyChecking=no"'
+          echo '[webservers]' > inventory.ini
+          echo 'tgscrumbot-cloud ansible_host=${{ vars.SSH_HOST }} ansible_user=${{ vars.SSH_USER }} ansible_ssh_private_key_file=./id_rsa' >> inventory.ini
+        working-directory: ansible
+
+      - name: Run Ansible Playbook
+        run: ansible-playbook setup.yml -i hosts.ini -e 'ansible_ssh_common_args="-o StrictHostKeyChecking=no"'
         working-directory: ansible
