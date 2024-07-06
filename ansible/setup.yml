@@ -1,0 +1,58 @@
+---
+- name: Setup Environment
+  hosts: all
+  become: yes
+  vars:
+    tg_token: "{{ lookup.env('TG_TOKEN') }}"
+  environment:
+    ansible_python_interpreter: auto_silent
+  tasks:
+#    - name: Install .deb packages
+#      apt:
+#        name:
+#          - acl  # need for correct become_user behavior
+#        state: present
+#        update_cache: yes
+    - name: Copy teanode binary
+      copy:
+        src: tgscrumbot
+        dest: /usr/local/bin/tgscrumbot
+        mode: '0755'
+
+    - name: Create /var/log/teanode directory
+      file:
+        path: /var/log/tgscrumbot
+        state: directory
+
+    - name: Create logrotate configuration for teanode
+      template:
+        src: "templates/logrotate.j2"
+        dest: /etc/logrotate.d/tgscrumbot
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Deploy tgscrumbot.service from template
+      template:
+        src: "templates/service.j2"
+        dest: "/etc/systemd/system/tgscrumbot.service"
+        mode: '0644'
+
+    - name: Reload systemd to apply new service
+      command: systemctl daemon-reload
+
+    - name: Enable and start tgscrumbot service
+      systemd:
+        name: tgscrumbot
+        enabled: yes
+        state: started
+
+    - name: Restart tgscrumbot service to apply new configuration
+      systemd:
+        name: tgscrumbot
+        state: restarted
+
+    - name: Ensure tgscrumbot service is running
+      systemd:
+        name: tgscrumbot
+        state: started
