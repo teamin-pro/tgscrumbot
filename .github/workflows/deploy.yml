@@ -26,7 +26,6 @@ jobs:
       - name: Build
         run: go build -o ansible/tgscrumbot tgscrumbot/cmd/tgscrumbot/main.go
 
-
       - name: Copy ssh key
         run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > id_rsa && chmod 600 id_rsa
         working-directory: ansible
@@ -34,6 +33,6 @@ jobs:
       - name: Run Ansible Playbook
         run: |
           ansible-playbook setup.yml \
-            -i '${{ vars.SSH_HOST }},ansible_host=${{ vars.SSH_HOST }} ansible_user=${{ vars.SSH_USER }} ansible_ssh_private_key_file=./id_rsa' \
+            -i '${{ secrets.SSH_HOST }},ansible_host=${{ secrets.SSH_HOST }} ansible_user=${{ secrets.SSH_USER }} ansible_ssh_private_key_file=./id_rsa' \
             -e 'ansible_ssh_common_args="-o StrictHostKeyChecking=no"'
         working-directory: ansible
