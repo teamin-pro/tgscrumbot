@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   vars:
-    tg_token: "{{ lookup.env('TG_TOKEN') }}"
+    tg_token: "{{ lookup('env', 'TG_TOKEN') }}"
   environment:
     ansible_python_interpreter: auto_silent
   tasks:
