@@ -1,0 +1,14 @@
+[Unit]
+Description=Tgscrumbot Service
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+ExecStart=tgscrumbot -token {{ tg_token }}
+Restart=always
+StandardOutput=append:/var/log/tgscrumbot/tgscrumbot.log
+StandardError=append:/var/log/tgscrumbot/tgscrumbot.error.log
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+/var/log/tgscrumbot/*.log {
+    daily
+    missingok
+    rotate 14
+    compress
+    delaycompress
+    notifempty
+    create 0640 www-data www-data
+    sharedscripts
+    postrotate
+        systemctl reload tgscrumbot > /dev/null 2>&1 || true
+    endscript
+}
