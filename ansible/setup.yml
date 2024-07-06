@@ -7,12 +7,6 @@
   environment:
     ansible_python_interpreter: auto_silent
   tasks:
-#    - name: Install .deb packages
-#      apt:
-#        name:
-#          - acl  # need for correct become_user behavior
-#        state: present
-#        update_cache: yes
     - name: Copy teanode binary
       copy:
         src: tgscrumbot
