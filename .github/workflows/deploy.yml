@@ -24,7 +24,8 @@ jobs:
           go-version-file: go.mod
 
       - name: Build
-        run: go build -o ansible/tgscrumbot tgscrumbot/cmd/main.go
+        run: go build -o ansible/tgscrumbot tgscrumbot/cmd/tgscrumbot/main.go
+
 
       - name: Copy ssh key
         run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > id_rsa && chmod 600 id_rsa
