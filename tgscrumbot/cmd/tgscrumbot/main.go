@@ -3,7 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log/slog"
 	"os"
+	"time"
+
+	"github.com/lmittmann/tint"
 
 	"github.com/teamin-pro/tgscrumbot/tgscrumbot/internal"
 )
@@ -15,6 +19,13 @@ var (
 
 func main() {
 	flag.Parse()
+
+	slog.SetDefault(slog.New(
+		tint.NewHandler(os.Stdout, &tint.Options{
+			Level:      slog.LevelDebug,
+			TimeFormat: time.Kitchen,
+		}),
+	))
 
 	bot, err := internal.NewBot(*token, *voteMessage)
 	if err != nil {

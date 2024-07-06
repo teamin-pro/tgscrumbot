@@ -3,7 +3,6 @@ package internal
 import (
 	"fmt"
 	"log/slog"
-	"os"
 	"regexp"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
@@ -23,7 +22,6 @@ func NewBot(token, voteMessage string) (*Bot, error) {
 		api:         api,
 		voteMessage: voteMessage,
 		helpMessage: "https://github.com/teamin-pro/tgscrumbot",
-		logger:      slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{})),
 		chatVotes:   make(map[int64]votes),
 		stopRegex:   regexp.MustCompile(`^[\s\-—–=]+$`),
 	}, nil
@@ -36,11 +34,10 @@ type Bot struct {
 	api       *tgbotapi.BotAPI
 	chatVotes map[int64]votes
 	stopRegex *regexp.Regexp
-	logger    *slog.Logger
 }
 
 func (b Bot) Run() error {
-	b.logger.Info(
+	slog.Info(
 		"start!",
 		slog.String("vote_message", b.voteMessage),
 		slog.String("help_message", b.helpMessage),
@@ -73,7 +70,7 @@ func (b Bot) handleUpdate(message *tgbotapi.Message) error {
 }
 
 func (b Bot) handlePrivateMessage(message *tgbotapi.Message) error {
-	b.logger.Info("send help", slog.Int64("user", message.From.ID))
+	slog.Info("send help", slog.Int64("user", message.From.ID))
 	if _, err := b.api.Send(tgbotapi.NewMessage(message.Chat.ID, b.helpMessage)); err != nil {
 		return fmt.Errorf("failed to send help: %w", err)
 	}
@@ -88,7 +85,7 @@ func (b Bot) handleStopMessage(message *tgbotapi.Message) error {
 
 	results := fmt.Sprintf(b.voteMessage, state.num(), state.avg())
 
-	b.logger.Info(
+	slog.Info(
 		"results",
 		slog.Int64("chat", message.Chat.ID),
 		slog.String("results", results),
@@ -111,7 +108,7 @@ func (b Bot) handleVoteMessage(message *tgbotapi.Message) error {
 		b.chatVotes[message.Chat.ID] = make(votes)
 	}
 
-	b.logger.Info(
+	slog.Info(
 		"vote",
 		slog.Int64("chat", message.Chat.ID),
 		slog.Int64("user", message.From.ID),
